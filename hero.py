@@ -2,7 +2,7 @@ import numpy as np
 
 class Hero():
     def __init__(self):
-        self.loc = 0
+        self.pos = 0
         self.r = 0
         self.g = 0
         self.b = 40
@@ -36,4 +36,13 @@ class Hero():
         self.w = 255
         self.b = 40
         self.dead = False
+        
+    def ckeck(self, obj):
+        if self.pos == obj.pos && obj.danger == True:
+            self.dead = True
+            self.vel = 0
+    
+                
+            
+        
         

@@ -88,11 +88,11 @@ if __name__ == '__main__':
         
         # create obstacle
         lava = Lava()
-        lava.loc = 8
+        lava.pos = 8
         
         # create hero
         hero = Hero()
-        hero.loc = 0
+        hero.pos = 0
         hero.vel = .5
         
         #create goal
@@ -110,14 +110,14 @@ if __name__ == '__main__':
             img.clear_all()
             
             # Painting obstacles
-            img.set_led(int(lava.loc), int(lava.r),int(lava.g),int(lava.b),int(lava.w))
+            img.set_led(int(lava.pos), int(lava.r),int(lava.g),int(lava.b),int(lava.w))
             
             # Paint Goal
             for i_led, v_led in enumerate(goal.rgb_out()):
-                img.set_led(int(goal.loc + i_led), int(v_led[0]), int(v_led[1]), int(v_led[2]), int(v_led[3]) )
+                img.set_led(int(goal.pos + i_led), int(v_led[0]), int(v_led[1]), int(v_led[2]), int(v_led[3]) )
             
             # Paint Hero
-            img.set_led(int(hero.loc), int(hero.r),int(hero.g),int(hero.b),int(hero.w))
+            img.set_led(int(hero.pos), int(hero.r),int(hero.g),int(hero.b),int(hero.w))
             
 #####################################################################
 

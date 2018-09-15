@@ -2,7 +2,7 @@ import numpy as np
 
 class Lava():
     def __init__(self):
-        self.loc = 0
+        self.pos = 0
         self.r = 100
         self.g = 0
         self.b = 0
