@@ -7,7 +7,7 @@ class Goal():
         self.r = 0
         self.g = 255
         self.b = 50
-        self.w = 255
+        self.w = 0
         self.flash_state = True
 
     def update_flash(self):
