@@ -9,6 +9,7 @@ from multiprocessing import Process, Manager, Value # Allow for multiple process
 from zmq.eventloop import ioloop, zmqstream# Asynchronous events through ZMQ
 from ledimage import ImageCreator
 from hero import Hero
+from objects import Goal
 
 matrix_ip = '127.0.0.1' # Local device ip
 everloop_port = 20021 # Driver Base port
@@ -123,6 +124,7 @@ if __name__ == '__main__':
         img = ImageCreator()
         hero = Hero()
         hero.vel = .5
+        goal = Goal()
         while True:
             driver_config_proto = driver_pb2.DriverConfig()
             img.clear_all()
@@ -131,6 +133,9 @@ if __name__ == '__main__':
 ####################### led painting happens here ####################
             
             img.set_led(int(hero.loc), int(hero.r),int(hero.g),int(hero.b),int(hero.w))
+            for i_led, v_led in enumerate(goal.rgb_out()):
+                img.set_led(int(goal.loc + i_led), int(v_led[0]), int(v_led[1]), int(v_led[2]), int(v_led[3]) )
+                
 #####################################################################
 
             leds = img.out
