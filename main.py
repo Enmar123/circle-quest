@@ -8,8 +8,11 @@ from matrix_io.proto.malos.v1 import io_pb2 # MATRIX Protocol Buffer sensor libr
 from multiprocessing import Process, Manager, Value # Allow for multiple processes at once
 from zmq.eventloop import ioloop, zmqstream# Asynchronous events through ZMQ
 from ledimage import ImageCreator
+
+# Our own imports
 from hero import Hero
 from objects import Goal
+from obstacle import Lava
 
 matrix_ip = '127.0.0.1' # Local device ip
 everloop_port = 20021 # Driver Base port
@@ -122,20 +125,37 @@ if __name__ == '__main__':
         socket.connect('tcp://{0}:{1}'.format(matrix_ip, everloop_port))
        
         img = ImageCreator()
+        
+        # create obstacle
+        lava = Lava()
+        lava.pos = 8
+        
+        # create hero
         hero = Hero()
+        hero.pos = 0
         hero.vel = .5
+        
+        #create goal
         goal = Goal()
         goal.width = 4
+        
+        #for tracking time
         start_time = time.time()
         frame = 0
+        
+####################### led painting happens here ####################     
         while True:
+            # Create a new driver config (for setup purposes)
             driver_config_proto = driver_pb2.DriverConfig()
             img.clear_all()
             
-            # Create a new driver config
-####################### led painting happens here ####################
+            # Painting obstacles
+            img.set_led(int(lava.loc), int(lava.r),int(lava.g),int(lava.b),int(lava.w))
             
+            # Paint Hero
             img.set_led(int(hero.loc), int(hero.r),int(hero.g),int(hero.b),int(hero.w))
+            
+            # Paint Goal
             for i_led, v_led in enumerate(goal.rgb_out()):
                 img.set_led(int(goal.loc + i_led), int(v_led[0]), int(v_led[1]), int(v_led[2]), int(v_led[3]) )
                 
