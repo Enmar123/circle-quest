@@ -125,6 +125,7 @@ if __name__ == '__main__':
         hero = Hero()
         hero.vel = .5
         while True:
+            img.clear_all()
             # Create a new driver config
 ####################### led painting happens here ####################
             
