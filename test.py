@@ -5,8 +5,10 @@ Created on Sat Sep 15 00:37:19 2018
 @author: Jason
 """
 
-print('hello')
-for i in range(0,0):
-    print('yeh')
-    
-print('end section')
+from imu import imu_data_callback
+import sleep
+
+
+while True:
+    imu_data_callback()
+    sleep(1)
