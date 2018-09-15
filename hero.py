@@ -15,12 +15,12 @@ class Hero():
     def dead(self):
         self.w = 0
 
-    def get_health(self, amt);
+    def get_health(self, amt):
         self.w += amt
         if self.w >= 255:
             self.w = 255
 
-    def lose_health(self, amt);
+    def lose_health(self, amt):
         self.w -= amt
         if self.w <= 0:
             self.w = 0
