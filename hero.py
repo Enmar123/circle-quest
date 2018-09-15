@@ -26,5 +26,5 @@ class Hero():
             self.w = 0
         
     def move(self):
-        self.loc += int(self.vel)
+        self.loc += self.vel
         # self.loc = self.loc%35

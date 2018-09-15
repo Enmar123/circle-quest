@@ -129,7 +129,7 @@ if __name__ == '__main__':
 ####################### led painting happens here ####################
             
             
-            img.set_led(hero.loc, hero.r,hero.g,hero.b,hero.w)
+            img.set_led(int(hero.loc), int(hero.r),int(hero.g),int(hero.b),int(hero.w))
 #####################################################################
 
             leds = img.out
