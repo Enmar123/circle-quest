@@ -38,10 +38,9 @@ class Hero():
         self.dead = False
         self.pos = 0
         
-    def ckeck(self, obj):
+    def check(self, obj):
         if self.pos == obj.pos and obj.danger == True:
             self.dead = True
-            self.vel = 0
     
                 
             
