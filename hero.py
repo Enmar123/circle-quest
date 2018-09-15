@@ -29,8 +29,8 @@ class Hero():
             self.dead = True
             
     def move(self):
-        self.loc += self.vel
-        self.loc = self.loc%35
+        self.pos += self.vel
+        self.pos = self.loc%35
 
     def resurrect(self):
         self.w = 255
