@@ -169,7 +169,7 @@ if __name__ == '__main__':
             if hero.dead:
                 hero.resurrect()
             
-            if int(curr_time - start_time)%0.5 == 0:
+            if curr_time - start_time%.5 == 0:
                 goal.update_flash()   
 #####################################################################
 # Avoid logging Everloop errors on user quiting
