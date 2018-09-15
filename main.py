@@ -125,6 +125,7 @@ if __name__ == '__main__':
         hero = Hero()
         hero.vel = .5
         goal = Goal()
+        goal.width = 4
         start_time = time.time()
         frame = 0
         while True:
