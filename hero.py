@@ -38,7 +38,7 @@ class Hero():
         self.dead = False
         
     def ckeck(self, obj):
-        if self.pos == obj.pos && obj.danger == True:
+        if self.pos == obj.pos and obj.danger == True:
             self.dead = True
             self.vel = 0
     
