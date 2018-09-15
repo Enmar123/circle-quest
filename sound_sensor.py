@@ -154,10 +154,12 @@ if __name__ == '__main__':
             # Send driver configuration through ZMQ socket
             socket.send(driver_config_proto.SerializeToString())
             # Wait before restarting loop
-            time.sleep(0.1)
+            loop_time = 0.1
+            time.sleep(loop_time)
 ########################game logic happens here#############################################
             hero.move()
-            hero.lose_health(10)
+            health_lost_p_sec = 50
+            hero.lose_health(loop_time/health_lost_p_sec)
 #####################################################################
 # Avoid logging Everloop errors on user quiting
     except KeyboardInterrupt:
