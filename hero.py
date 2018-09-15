@@ -30,7 +30,7 @@ class Hero():
             
     def move(self):
         self.pos += self.vel
-        self.pos = self.loc%35
+        self.pos = self.pos%35
 
     def resurrect(self):
         self.w = 255
