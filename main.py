@@ -126,6 +126,7 @@ if __name__ == '__main__':
         hero.vel = .5
         goal = Goal()
         start_time = time.time()
+        frame = 0
         while True:
             driver_config_proto = driver_pb2.DriverConfig()
             img.clear_all()
@@ -161,15 +162,15 @@ if __name__ == '__main__':
             socket.send(driver_config_proto.SerializeToString())
             # Wait before restarting loop
             loop_time = 0.1
-            curr_time = time.time()
             time.sleep(loop_time)
+            frame += 1
 ########################game logic happens here#############################################
             hero.move()
             hero.lose_health(255/5*.1)
             if hero.dead:
                 hero.resurrect()
             
-            if curr_time - start_time%.5 == 0:
+            if frame%5 == 0:
                 goal.update_flash()   
 #####################################################################
 # Avoid logging Everloop errors on user quiting
