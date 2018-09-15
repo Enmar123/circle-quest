@@ -138,10 +138,10 @@ if __name__ == '__main__':
             for led in leds:
                # Set individual LED value
                ledValue = io_pb2.LedValue()
-               ledValue.blue = led[2]
-               ledValue.red = led[0]
-               ledValue.green = led[1]
-               ledValue.white = led[3]
+               ledValue.blue = int(led[2])
+               ledValue.red = int(led[0])
+               ledValue.green = int(led[1])
+               ledValue.white = int(led[3])
                image.append(ledValue)
            # Store the Everloop image in driver configuration
 
