@@ -160,6 +160,9 @@ if __name__ == '__main__':
             hero.move()
             
             hero.lose_health(255/5*.1)
+
+            if hero.dead:
+                resurrect()
 #####################################################################
 # Avoid logging Everloop errors on user quiting
     except KeyboardInterrupt:

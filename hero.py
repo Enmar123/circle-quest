@@ -8,6 +8,7 @@ class Hero():
         self.b = 40
         self.w = 255
         self.vel = 0
+        self.dead = False
 
     def rgb_out(self):
         return np.array([self.r, self.g, self.b, self.w])
@@ -25,7 +26,13 @@ class Hero():
         if self.w <= 0:
             self.w = 0
             self.b = 0
-        
+            self.dead = True
+            
     def move(self):
         self.loc += self.vel
         self.loc = self.loc%35
+
+    def resurrect(self):
+        self.w = 255
+        self.b = 40
+        
