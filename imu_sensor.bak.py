@@ -48,7 +48,7 @@ def imu_data_callback(data):
     # print('{0}'.format(data))
     return data
     
-def run():
+if __name__ == '__main__':
     # Initiate asynchronous events
     ioloop.install()
     # Send Base Port configuration 
