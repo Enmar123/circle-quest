@@ -24,6 +24,7 @@ class Hero():
         self.w -= amt
         if self.w <= 0:
             self.w = 0
+            self.b = 0
         
     def move(self):
         self.loc += self.vel
