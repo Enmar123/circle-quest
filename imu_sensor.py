@@ -16,7 +16,7 @@ from zmq.eventloop import ioloop # Asynchronous events through ZMQ
 matrix_ip = '127.0.0.1' # Local device ip
 imu_port = 20013 # Driver Base port
 # Handy functions for connecting to the keep-Alive, Data Update, & Error port 
-from utils import driver_keep_alive, register_data_callback, register_error_callback
+#from utils import driver_keep_alive, register_data_callback, register_error_callback
 
 
 def config_socket():
