@@ -6,9 +6,9 @@ Created on Sat Sep 15 00:37:19 2018
 """
 
 from imu import imu_data_callback
-import sleep
+from time import sleep
 
 
 while True:
-    imu_data_callback()
+    print(imu_data_callback())
     sleep(1)
