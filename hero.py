@@ -7,6 +7,7 @@ class Hero():
         self.g = 0
         self.b = 0
         self.w = 255
+        self.vel = 0
 
     def rgb_out(self):
         return np.array([self.r, self.g, self.b, self.w])
@@ -24,3 +25,5 @@ class Hero():
         if self.w <= 0:
             self.w = 0
         
+    def move(self):
+        self.loc += int(self.vel)

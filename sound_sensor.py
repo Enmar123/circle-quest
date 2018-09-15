@@ -8,6 +8,7 @@ from matrix_io.proto.malos.v1 import io_pb2 # MATRIX Protocol Buffer sensor libr
 from multiprocessing import Process, Manager, Value # Allow for multiple processes at once
 from zmq.eventloop import ioloop, zmqstream# Asynchronous events through ZMQ
 from ledimage import ImageCreator
+from hero import Hero
 
 matrix_ip = '127.0.0.1' # Local device ip
 everloop_port = 20021 # Driver Base port
@@ -121,19 +122,18 @@ if __name__ == '__main__':
         driver_config_proto = driver_pb2.DriverConfig()
 
         img = ImageCreator()
+        hero = Hero()
         while True:
             # Create a new driver config
 ####################### led painting happens here ####################
-            r = 0
-            led_count = 35
-            for i in range(led_count):
-                r += int(200/35)
-                img.set_led(i, r,0,0,0)
-                
-          
-            leds = img.out
             
+            
+            img.set_led(hero.loc, hero.r,hero.g,hero.b,hero.w)
+#####################################################################
+
+            leds = img.out
             image = []
+            
            # For each device LED
             for led in leds:
                # Set individual LED value
@@ -145,12 +145,26 @@ if __name__ == '__main__':
                image.append(ledValue)
            # Store the Everloop image in driver configuration
 
+            
+            ledValue = io_pb2.LedValue()
+            ledValue.blue = int(led[2])
+            ledValue.red = int(led[0])
+            ledValue.green = int(led[1])
+            ledValue.white = int(led[3])
+               
             driver_config_proto.image.led.extend(image)
+            
 
             # Send driver configuration through ZMQ socket
             socket.send(driver_config_proto.SerializeToString())
             # Wait before restarting loop
             time.sleep(0.1)
+########################game logic happens here#############################################
+            hero.vel += 0.01
+            hero.move()
+
+
+#####################################################################
 # Avoid logging Everloop errors on user quiting
     except KeyboardInterrupt:
         print(' quit')
