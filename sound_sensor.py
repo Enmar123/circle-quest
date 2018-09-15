@@ -15,6 +15,11 @@ led_count = 0 # Amount of LEDs on MATRIX device (35 leds for us)
 def ledSpin(lit_led):
     # Create an empty Everloop image
     image = []
+    
+    if led_count == lit_led:
+        lit_led = 0
+    else:
+        lit_led = lit_led + 1
         
     for led in range(0, lit_led):
         # Set individual LED value
@@ -45,10 +50,7 @@ def ledSpin(lit_led):
         
             #reset led counter    
         
-    if led_count == lit_led:
-        lit_led = 0
-    else:
-        lit_led = lit_led + 1
+
     
     return [image, lit_led] 
     
