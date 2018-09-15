@@ -133,6 +133,8 @@ if __name__ == '__main__':
 #####################################################################
 
             leds = img.out
+            print(leds[int(hero.loc)])
+    
             image = []
             
            # For each device LED
@@ -156,8 +158,6 @@ if __name__ == '__main__':
             time.sleep(0.1)
 ########################game logic happens here#############################################
             hero.move()
-            print(hero.loc)
-
 
 #####################################################################
 # Avoid logging Everloop errors on user quiting
