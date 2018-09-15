@@ -5,7 +5,7 @@ class Hero():
         self.loc = 0
         self.r = 0
         self.g = 0
-        self.b = 0
+        self.b = 40
         self.w = 255
         self.vel = 0
 
