@@ -127,7 +127,7 @@ if __name__ == '__main__':
             r = 0
             led_count = 35
             for i in range(led_count):
-                r += 255/35
+                r += int(200/35)
                 img.set_led(i, r,0,0,0)
                 
           
