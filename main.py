@@ -146,7 +146,7 @@ if __name__ == '__main__':
             
 ########################game logic happens here#############################################
             
-            hero.check()
+            hero.check(lava)
             hero.move()
             
             #lava.pulse()
