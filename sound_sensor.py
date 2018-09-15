@@ -129,12 +129,11 @@ if __name__ == '__main__':
             # Create a new driver config
 ####################### led painting happens here ####################
             
-            print(int(hero.loc))
             img.set_led(int(hero.loc), int(hero.r),int(hero.g),int(hero.b),int(hero.w))
 #####################################################################
 
             leds = img.out
-            print(leds[int(hero.loc)])
+            print(leds)
     
             image = []
             
