@@ -14,9 +14,10 @@ class Lava():
         return np.array([self.r, self.g, self.b, self.w])
 
     def pulse(self):
+        limit = 20
         self.count= self.count + 1
-        self.count = self.count%20
-        if self.count < 5:
+        self.count = self.count%limit
+        if self.count < limit/2:
             self.r = 100
             self.danger = True
         else:

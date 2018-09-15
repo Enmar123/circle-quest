@@ -112,13 +112,13 @@ if __name__ == '__main__':
             # Painting obstacles
             img.set_led(int(lava.loc), int(lava.r),int(lava.g),int(lava.b),int(lava.w))
             
-            # Paint Hero
-            img.set_led(int(hero.loc), int(hero.r),int(hero.g),int(hero.b),int(hero.w))
-            
             # Paint Goal
             for i_led, v_led in enumerate(goal.rgb_out()):
                 img.set_led(int(goal.loc + i_led), int(v_led[0]), int(v_led[1]), int(v_led[2]), int(v_led[3]) )
-                
+            
+            # Paint Hero
+            img.set_led(int(hero.loc), int(hero.r),int(hero.g),int(hero.b),int(hero.w))
+            
 #####################################################################
 
             leds = img.out
