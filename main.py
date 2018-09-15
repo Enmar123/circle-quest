@@ -156,11 +156,9 @@ if __name__ == '__main__':
             # Wait before restarting loop
             loop_time = 0.1
             time.sleep(loop_time)
-m########################game logic happens here#############################################
+########################game logic happens here#############################################
             hero.move()
-            
             hero.lose_health(255/5*.1)
-
             if hero.dead:
                 hero.resurrect()
 #####################################################################
