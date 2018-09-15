@@ -159,7 +159,7 @@ if __name__ == '__main__':
 ########################game logic happens here#############################################
             hero.move()
             
-            hero.lose_health((hero.w -50)*.1)
+            hero.lose_health(50*.1)
 #####################################################################
 # Avoid logging Everloop errors on user quiting
     except KeyboardInterrupt:
