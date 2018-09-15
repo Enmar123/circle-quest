@@ -145,8 +145,12 @@ if __name__ == '__main__':
             frame += 1
             
 ########################game logic happens here#############################################
+            
+            hero.check()
             hero.move()
-            lava.pulse()
+            
+            #lava.pulse()
+            
             hero.lose_health(255/5*.1)
             if hero.dead:
                 hero.resurrect()
