@@ -88,7 +88,7 @@ if __name__ == '__main__':
         
         # create obstacle
         lava = Lava()
-        lava.pos = 8
+        lava.pos = 15
         
         # create hero
         hero = Hero()
