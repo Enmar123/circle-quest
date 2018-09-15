@@ -58,7 +58,7 @@ def config_socket(ledCount):
          
         #reset led counter    
         
-        if lit_led == ledCount:
+        if lit_led == ledCount+1:
             lit_led = 0
             
         lit_led = lit_led + 1
