@@ -10,6 +10,7 @@ from zmq.eventloop import ioloop, zmqstream# Asynchronous events through ZMQ
 matrix_ip = '127.0.0.1' # Local device ip
 everloop_port = 20021 # Driver Base port
 led_count = 0 # Amount of LEDs on MATRIX device (35 leds for us)
+lit_led = 0
 
 def config_socket(ledCount):  
     # Define zmq socket
@@ -25,7 +26,7 @@ def config_socket(ledCount):
         driver_config_proto = driver_pb2.DriverConfig()
         # Create an empty Everloop image
         image = []
-    		lit_led = 4
+    
         # For each device LED
         for led in range(0, lit_led):
             # Set individual LED value
@@ -45,7 +46,7 @@ def config_socket(ledCount):
             ledValue.white = 0
             image.append(ledValue)
 		
-		for led in range(lit_led +1, ledCount):
+    		for led in range(lit_led +1, ledCount):
             # Set individual LED value
             ledValue = io_pb2.LedValue()
             ledValue.blue = 0
@@ -53,13 +54,18 @@ def config_socket(ledCount):
             ledValue.green = 0
             ledValue.white = 0
             image.append(ledValue)
+         
+        #reset led counter    
+        lit_led = lit_led+1
+        if lit_led = ledCount:
+            lit_led = 0
         # Store the Everloop image in driver configuration
         driver_config_proto.image.led.extend(image)
 
         # Send driver configuration through ZMQ socket
         socket.send(driver_config_proto.SerializeToString())
         # Wait before restarting loop
-        time.sleep(0.05)
+        time.sleep(0.1)
 
 def ping_socket():
     # Define zmq socket
