@@ -126,6 +126,7 @@ if __name__ == '__main__':
         while True:
             driver_config_proto = driver_pb2.DriverConfig()
             img.clear_all()
+            
             # Create a new driver config
 ####################### led painting happens here ####################
             
@@ -156,7 +157,7 @@ if __name__ == '__main__':
             time.sleep(0.1)
 ########################game logic happens here#############################################
             hero.move()
-
+            hero.lose_health(10)
 #####################################################################
 # Avoid logging Everloop errors on user quiting
     except KeyboardInterrupt:
