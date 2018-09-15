@@ -26,21 +26,12 @@ def config_socket(ledCount):
         # Create an empty Everloop image
         image = []
         # For each device LED
-        for led in range(0, ledCount/2):
+        for led in range(ledCount):
             # Set individual LED value
             ledValue = io_pb2.LedValue()
-            ledValue.blue = 100
-            ledValue.red = 0
-            ledValue.green = 0
-            ledValue.white = 0
-            image.append(ledValue)
-            
-        for led in range(ledCount/2):
-            # Set individual LED value
-            ledValue = io_pb2.LedValue()
-            ledValue.blue = 0
-            ledValue.red = 100
-            ledValue.green = 0
+            ledValue.blue = 255
+            ledValue.red = randint(0, 200)
+            ledValue.green = randint(0, 255)
             ledValue.white = 0
             image.append(ledValue)
         # Store the Everloop image in driver configuration
