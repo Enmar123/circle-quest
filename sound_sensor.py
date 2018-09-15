@@ -25,7 +25,7 @@ def config_socket(ledCount):
         driver_config_proto = driver_pb2.DriverConfig()
         # Create an empty Everloop image
         image = []
-		lit_led = 4
+    		lit_led = 4
         # For each device LED
         for led in range(0, lit_led):
             # Set individual LED value
