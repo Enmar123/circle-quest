@@ -126,7 +126,7 @@ if __name__ == '__main__':
 ####################### led painting happens here ####################
             r = 0
             led_count = 35
-            for i in arange(led_count):
+            for i in range(led_count):
                 r += 255/35
                 img.set_led(i, r,0,0,0)
                 
