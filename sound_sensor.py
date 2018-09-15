@@ -10,7 +10,7 @@ from zmq.eventloop import ioloop, zmqstream# Asynchronous events through ZMQ
 matrix_ip = '127.0.0.1' # Local device ip
 everloop_port = 20021 # Driver Base port
 led_count = 0 # Amount of LEDs on MATRIX device (35 leds for us)
-lit_led = 0
+
 
 def ledSpin(lit_led):
     # Create an empty Everloop image
@@ -50,7 +50,7 @@ def ledSpin(lit_led):
         
     lit_led = lit_led + 1
     
-    return image 
+    return [image, lit_led] 
     
 
 def config_socket(ledCount):  
@@ -60,13 +60,16 @@ def config_socket(ledCount):
     socket = context.socket(zmq.PUSH)
     # Connect Pusher to configuration socket
     socket.connect('tcp://{0}:{1}'.format(matrix_ip, everloop_port))
-    #where Lit Led starts
+    # Position where Lit Led starts
+    lit_led = 0
     # Loop forever
     while True:
         # Create a new driver config
         driver_config_proto = driver_pb2.DriverConfig()
         # Create an empty Everloop image
-        image = ledSpin(lit_led)
+        var = ledSpin(lit_led)
+        image = var[0]
+        lit_led = var[1]
         
 #        image = []
 #        
