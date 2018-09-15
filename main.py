@@ -19,48 +19,6 @@ everloop_port = 20021 # Driver Base port
 led_count = 0 # Amount of LEDs on MATRIX device (35 leds for us)
 
 
-def ledSpin(lit_led):
-    # Create an empty Everloop image
-    image = []
-    
-    if led_count == lit_led:
-        lit_led = 1
-    else:
-        lit_led = lit_led + 1
-        
-    for led in range(0, lit_led):
-        # Set individual LED value
-        ledValue = io_pb2.LedValue()
-        ledValue.blue = 0
-        ledValue.red = 0
-        ledValue.green = 0
-        ledValue.white = 0
-        image.append(ledValue)
-        
-    for led in range(lit_led, lit_led+1):
-        # Set individual LED value
-        ledValue = io_pb2.LedValue()
-        ledValue.blue = 0
-        ledValue.red = 100
-        ledValue.green = 0
-        ledValue.white = 0
-        image.append(ledValue)
-		
-    for led in range(lit_led +1, led_count):
-        # Set individual LED value
-        ledValue = io_pb2.LedValue()
-        ledValue.blue = 0
-        ledValue.red = 0
-        ledValue.green = 0
-        ledValue.white = 0
-        image.append(ledValue)
-        
-            #reset led counter    
-        
-
-    return [image, lit_led] 
-    
-
 def ping_socket():
     # Define zmq socket
     context = zmq.Context()
@@ -125,6 +83,8 @@ if __name__ == '__main__':
         socket.connect('tcp://{0}:{1}'.format(matrix_ip, everloop_port))
        
         img = ImageCreator()
+
+####################### Loading Objects ###############################
         
         # create obstacle
         lava = Lava()
@@ -173,18 +133,17 @@ if __name__ == '__main__':
                ledValue.green = int(led[1])
                ledValue.white = int(led[3])
                image.append(ledValue)
+               
            # Store the Everloop image in driver configuration
-
-   
             driver_config_proto.image.led.extend(image)
             
-
             # Send driver configuration through ZMQ socket
             socket.send(driver_config_proto.SerializeToString())
             # Wait before restarting loop
             loop_time = 0.1
             time.sleep(loop_time)
             frame += 1
+            
 ########################game logic happens here#############################################
             hero.move()
             hero.lose_health(255/5*.1)

@@ -47,7 +47,8 @@ def imu_data_callback(data):
     # Log data 
     # print('{0}'.format(data))
     return data
-    
+  
+#if __name__=='__main__':
 def run():
     # Initiate asynchronous events
     ioloop.install()
