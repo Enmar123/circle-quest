@@ -9,7 +9,7 @@ from multiprocessing import Process, Manager, Value # Allow for multiple process
 from zmq.eventloop import ioloop, zmqstream# Asynchronous events through ZMQ
 matrix_ip = '127.0.0.1' # Local device ip
 everloop_port = 20021 # Driver Base port
-led_count = 0 # Amount of LEDs on MATRIX device
+led_count = 0 # Amount of LEDs on MATRIX device (35 leds for us)
 
 def config_socket(ledCount):  
     # Define zmq socket
@@ -25,21 +25,31 @@ def config_socket(ledCount):
         driver_config_proto = driver_pb2.DriverConfig()
         # Create an empty Everloop image
         image = []
+		lit_led = 4
         # For each device LED
-        for led in range(0, ledCount/2):
+        for led in range(0, lit_led):
             # Set individual LED value
             ledValue = io_pb2.LedValue()
-            ledValue.blue = 100
+            ledValue.blue = 0
             ledValue.red = 0
             ledValue.green = 0
             ledValue.white = 0
             image.append(ledValue)
             
-        for led in range(ledCount/2):
+        for led in range(lit_led, lit_led+1):
             # Set individual LED value
             ledValue = io_pb2.LedValue()
             ledValue.blue = 0
             ledValue.red = 100
+            ledValue.green = 0
+            ledValue.white = 0
+            image.append(ledValue)
+		
+		for led in range(lit_led +1, ledCount):
+            # Set individual LED value
+            ledValue = io_pb2.LedValue()
+            ledValue.blue = 0
+            ledValue.red = 0
             ledValue.green = 0
             ledValue.white = 0
             image.append(ledValue)
