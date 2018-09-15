@@ -17,8 +17,8 @@ class Goal():
             self.r = 40
         if not self.flash_state:
             self.flash_state = True
-            self.g = 255
-            self.r = 0
+            self.g = 0
+            self.r = 200
 
     def rgb_out(self):
         return np.array([[self.r, self.g, self.b, self.w]]*self.width)
