@@ -123,6 +123,7 @@ if __name__ == '__main__':
 
         img = ImageCreator()
         hero = Hero()
+        hero.vel = .5
         while True:
             # Create a new driver config
 ####################### led painting happens here ####################
@@ -145,13 +146,7 @@ if __name__ == '__main__':
                image.append(ledValue)
            # Store the Everloop image in driver configuration
 
-            
-            ledValue = io_pb2.LedValue()
-            ledValue.blue = int(led[2])
-            ledValue.red = int(led[0])
-            ledValue.green = int(led[1])
-            ledValue.white = int(led[3])
-               
+   
             driver_config_proto.image.led.extend(image)
             
 
@@ -160,7 +155,6 @@ if __name__ == '__main__':
             # Wait before restarting loop
             time.sleep(0.1)
 ########################game logic happens here#############################################
-            hero.vel = .5
             hero.move()
 
 
