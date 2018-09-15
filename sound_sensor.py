@@ -119,12 +119,12 @@ if __name__ == '__main__':
         socket = context.socket(zmq.PUSH)
         # Connect Pusher to configuration socket
         socket.connect('tcp://{0}:{1}'.format(matrix_ip, everloop_port))
-        driver_config_proto = driver_pb2.DriverConfig()
-
+       
         img = ImageCreator()
         hero = Hero()
         hero.vel = .5
         while True:
+            driver_config_proto = driver_pb2.DriverConfig()
             img.clear_all()
             # Create a new driver config
 ####################### led painting happens here ####################
@@ -133,8 +133,6 @@ if __name__ == '__main__':
 #####################################################################
 
             leds = img.out
-            print(leds)
-    
             image = []
             
            # For each device LED
