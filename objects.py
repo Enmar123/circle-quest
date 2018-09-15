@@ -2,7 +2,7 @@ import numpy as np
 
 class Goal():
     def __init__(self):
-        self.loc = 0
+        self.pos = 0
         self.width = 2
         self.r = 0
         self.g = 100
