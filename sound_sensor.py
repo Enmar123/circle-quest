@@ -56,11 +56,6 @@ def ledSpin(lit_led):
     return [image, lit_led] 
     
 
-def config_socket():  
-    # Define zmq socket
-    # Position where Lit Led starts
-    # Loop forever
-    
 def ping_socket():
     # Define zmq socket
     context = zmq.Context()
