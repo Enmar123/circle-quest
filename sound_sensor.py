@@ -7,6 +7,9 @@ from matrix_io.proto.malos.v1 import driver_pb2 # MATRIX Protocol Buffer driver 
 from matrix_io.proto.malos.v1 import io_pb2 # MATRIX Protocol Buffer sensor library
 from multiprocessing import Process, Manager, Value # Allow for multiple processes at once
 from zmq.eventloop import ioloop, zmqstream# Asynchronous events through ZMQ
+from ledimage import ImageCreator
+from hero import Hero
+
 matrix_ip = '127.0.0.1' # Local device ip
 everloop_port = 20021 # Driver Base port
 led_count = 0 # Amount of LEDs on MATRIX device (35 leds for us)
@@ -51,72 +54,8 @@ def ledSpin(lit_led):
             #reset led counter    
         
 
-    
     return [image, lit_led] 
     
-
-def config_socket(ledCount):  
-    # Define zmq socket
-    context = zmq.Context()
-    # Create a Pusher socket
-    socket = context.socket(zmq.PUSH)
-    # Connect Pusher to configuration socket
-    socket.connect('tcp://{0}:{1}'.format(matrix_ip, everloop_port))
-    # Position where Lit Led starts
-    lit_led = 0
-    # Loop forever
-    while True:
-        # Create a new driver config
-        driver_config_proto = driver_pb2.DriverConfig()
-        # Create an empty Everloop image
-        var = ledSpin(lit_led)
-        image = var[0]
-        lit_led = var[1]
-        
-#        image = []
-#        
-#        # For each device LED
-#        for led in range(0, lit_led):
-#            # Set individual LED value
-#            ledValue = io_pb2.LedValue()
-#            ledValue.blue = 0
-#            ledValue.red = 0
-#            ledValue.green = 0
-#            ledValue.white = 0
-#            image.append(ledValue)
-#            
-#        for led in range(lit_led, lit_led+1):
-#            # Set individual LED value
-#            ledValue = io_pb2.LedValue()
-#            ledValue.blue = 0
-#            ledValue.red = 100
-#            ledValue.green = 0
-#            ledValue.white = 0
-#            image.append(ledValue)
-#		
-#        for led in range(lit_led +1, ledCount):
-#            # Set individual LED value
-#            ledValue = io_pb2.LedValue()
-#            ledValue.blue = 0
-#            ledValue.red = 0
-#            ledValue.green = 0
-#            ledValue.white = 0
-#            image.append(ledValue)
-         
-        #reset led counter    
-        
-#        if lit_led == ledCount:
-#            lit_led = 0
-#            
-#        lit_led = lit_led + 1
-        
-        # Store the Everloop image in driver configuration
-        driver_config_proto.image.led.extend(image)
-
-        # Send driver configuration through ZMQ socket
-        socket.send(driver_config_proto.SerializeToString())
-        # Wait before restarting loop
-        time.sleep(0.1)
 
 def ping_socket():
     # Define zmq socket
@@ -175,7 +114,57 @@ if __name__ == '__main__':
     update_socket()
     # Send Base Port configuration
     try:
-        config_socket(led_count)
-    # Avoid logging Everloop errors on user quiting
+        context = zmq.Context()
+        # Create a Pusher socket
+        socket = context.socket(zmq.PUSH)
+        # Connect Pusher to configuration socket
+        socket.connect('tcp://{0}:{1}'.format(matrix_ip, everloop_port))
+        driver_config_proto = driver_pb2.DriverConfig()
+
+        img = ImageCreator()
+        hero = Hero()
+        while True:
+            # Create a new driver config
+####################### led painting happens here ####################
+            
+            
+            img.set_led(hero.loc, hero.r,hero.g,hero.b,hero.w)
+#####################################################################
+
+            leds = img.out
+            image = []
+            
+           # For each device LED
+            for led in leds:
+               # Set individual LED value
+               ledValue = io_pb2.LedValue()
+               ledValue.blue = int(led[2])
+               ledValue.red = int(led[0])
+               ledValue.green = int(led[1])
+               ledValue.white = int(led[3])
+               image.append(ledValue)
+           # Store the Everloop image in driver configuration
+
+            
+            ledValue = io_pb2.LedValue()
+            ledValue.blue = int(led[2])
+            ledValue.red = int(led[0])
+            ledValue.green = int(led[1])
+            ledValue.white = int(led[3])
+               
+            driver_config_proto.image.led.extend(image)
+            
+
+            # Send driver configuration through ZMQ socket
+            socket.send(driver_config_proto.SerializeToString())
+            # Wait before restarting loop
+            time.sleep(0.1)
+########################game logic happens here#############################################
+            hero.vel = .5
+            hero.move()
+
+
+#####################################################################
+# Avoid logging Everloop errors on user quiting
     except KeyboardInterrupt:
         print(' quit')
