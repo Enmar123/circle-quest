@@ -160,7 +160,7 @@ if __name__ == '__main__':
             # Wait before restarting loop
             time.sleep(0.1)
 ########################game logic happens here#############################################
-            hero.vel += 1
+            hero.vel = .5
             hero.move()
 
 
