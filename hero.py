@@ -6,7 +6,7 @@ class Hero():
         self.r = 0
         self.g = 0
         self.b = 40
-        self.w = 255
+        self.w = 100
         self.vel = 0
         self.dead = False
 

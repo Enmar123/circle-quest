@@ -146,6 +146,7 @@ if __name__ == '__main__':
             
 ########################game logic happens here#############################################
             hero.move()
+            lava.pulse()
             hero.lose_health(255/5*.1)
             if hero.dead:
                 hero.resurrect()

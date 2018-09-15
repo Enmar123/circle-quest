@@ -5,7 +5,7 @@ class Goal():
         self.loc = 0
         self.width = 2
         self.r = 0
-        self.g = 255
+        self.g = 100
         self.b = 50
         self.w = 0
         self.flash_state = True

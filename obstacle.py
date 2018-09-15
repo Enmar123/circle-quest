@@ -15,7 +15,7 @@ class Lava():
 
     def pulse(self):
         self.count= self.count + 1
-        self.count = self.count%10
+        self.count = self.count%20
         if self.count < 5:
             self.r = 100
             self.danger = True
