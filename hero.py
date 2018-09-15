@@ -35,4 +35,5 @@ class Hero():
     def resurrect(self):
         self.w = 255
         self.b = 40
+        self.dead = False
         
