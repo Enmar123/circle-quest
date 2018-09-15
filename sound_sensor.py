@@ -47,8 +47,8 @@ def ledSpin(lit_led):
         
     if led_count == lit_led:
         lit_led = 0
-        
-    lit_led = lit_led + 1
+    else:
+        lit_led = lit_led + 1
     
     return [image, lit_led] 
     
