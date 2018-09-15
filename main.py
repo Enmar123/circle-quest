@@ -169,8 +169,8 @@ if __name__ == '__main__':
             hero.lose_health(255/5*.1)
             if hero.dead:
                 hero.resurrect()
-            
-            if frame%5 == 0:
+            print(frame%10)
+            if frame%10 == 0:
                 goal.update_flash()   
 #####################################################################
 # Avoid logging Everloop errors on user quiting
