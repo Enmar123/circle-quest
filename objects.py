@@ -13,10 +13,12 @@ class Goal():
     def update_flash(self):
         if self.flash_state:
             self.flash_state = False
-            self.g = 150
+            self.g = 200
+            self.r = 40
         if not self.flash_state:
             self.flash_state = True
             self.g = 255
+            self.r = 0
 
     def rgb_out(self):
         return np.array([[self.r, self.g, self.b, self.w]]*self.width)
