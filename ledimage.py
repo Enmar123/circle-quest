@@ -12,9 +12,9 @@ class ImageCreator():
         self.out[index] = [0,0,0,0]
 
     def brighten_led(self, index, intensity):
-        img.out[2][img.out[2] >0 ] += intensity 
+        img.out[index][img.out[index] >0 ] += intensity 
 
     def dim_led(self, index, intensity):
-        img.out[2][img.out[2] >0 ] -= intensity 
+        img.out[index][img.out[index] >0 ] -= intensity 
         
 
