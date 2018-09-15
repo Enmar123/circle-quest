@@ -158,8 +158,8 @@ if __name__ == '__main__':
             time.sleep(loop_time)
 ########################game logic happens here#############################################
             hero.move()
-            health_lost_p_sec = 50
-            hero.lose_health(loop_time/health_lost_p_sec)
+            
+            hero.lose_health((hero.w -50)*.1)
 #####################################################################
 # Avoid logging Everloop errors on user quiting
     except KeyboardInterrupt:
