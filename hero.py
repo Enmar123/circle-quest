@@ -56,6 +56,7 @@ class Hero():
         
         hypotenuse = m.hypot(pitch, roll)
         scaling = m.hypot(45,45)
+        const = 2
         
         theta = np.arctan2(pitch, roll)
         inc = 2*m.pi/35
@@ -64,13 +65,16 @@ class Hero():
         for i in range(int(35/2)):
             loc = (led - i)%35
             if loc == self.pos :
-                self.vel = (hypotenuse/scaling) * -1
+                self.vel = const*(hypotenuse/scaling) * -1
+                break
                 
         for i in range(int(35/2)):
             loc = (led - i)%35
             if loc == self.pos :
-                self.vel = (hypotenuse/scaling) * 1
-                
+                self.vel = const*(hypotenuse/scaling) * 1
+                break
+        
+        self.vel = round(self.vel)
     
     def victoryBlink(self):
         if self.count < 10:
