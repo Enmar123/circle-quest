@@ -43,6 +43,7 @@ def imu_data_callback(data):
     file = open("imu_data.txt","w")
     file.write(str(data))
     file.close() 
+    time.sleep(.01)
     # Log data 
     print('{0}'.format(data))
 
