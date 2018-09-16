@@ -9,6 +9,8 @@ class Goal():
         self.b = 50
         self.w = 0
         self.flash_state = True
+        self.danger = False
+        self.goal = True
 
     def update_flash(self):
         if self.flash_state:

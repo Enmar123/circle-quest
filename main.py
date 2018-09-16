@@ -96,7 +96,7 @@ if __name__ == '__main__':
         
         # create hero
         hero = Hero()
-        hero.pos = 0
+        hero.spawn = 17
         hero.vel = .5
         
         #create goal
@@ -154,14 +154,25 @@ if __name__ == '__main__':
             
             hero.check(lava)
             hero.check(lava1)
+            hero.check(goal)
+            
+            if hero.won:
+                hero.speed = 0
+                hero.blink()
+            else:
+                 hero.lose_health(255/5*.1)
+            
+            if hero.dead:
+                hero.resurrect()
+            
             hero.move()
             
             lava.pulse()
             lava1.pulse()
             
-            hero.lose_health(255/5*.1)
-            if hero.dead:
-                hero.resurrect()
+
+                
+
            
 #####################################################################
 # Avoid logging Everloop errors on user quiting

@@ -2,14 +2,17 @@ import numpy as np
 import math as m
 
 class Hero():
-    def __init__(self):
-        self.pos = 0
+    def __init__(self, spawn):
+        self.spawn = spawn
+        self.pos = spawn
         self.r = 0
         self.g = 0
         self.b = 40
         self.w = 100
         self.vel = 0
+        self.count = 0
         self.dead = False
+        self.won = False
 
     def rgb_out(self):
         return np.array([self.r, self.g, self.b, self.w])
@@ -37,11 +40,16 @@ class Hero():
         self.w = 255
         self.b = 40
         self.dead = False
-        self.pos = 0
+        self.won = False
+        self.pos = self.spawn
         
     def check(self, obj):
         if self.pos == obj.pos and obj.danger == True:
             self.dead = True
+            
+        if self.pos == obj.pos and obj.goal == True:
+            self.won = True
+            
     
     def speed(self, pitch, roll):
         
@@ -61,6 +69,18 @@ class Hero():
             if loc == self.pos :
                 self.vel = self.vel * 1
                 
+    def blink(self):
+        if self.count < 10:
+            if self.count % 2 == 0:
+                self.w = 100 
+            else:
+                self.w = 0
+                
+            self.count = self.count + 1
+        else:
+            self.count = 0
+            self.resurrect
+            
 
         
         
