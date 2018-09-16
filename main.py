@@ -95,8 +95,7 @@ if __name__ == '__main__':
         
         
         # create hero
-        hero = Hero()
-        hero.spawn = 17
+        hero = Hero(17)
         hero.vel = .5
         
         #create goal
