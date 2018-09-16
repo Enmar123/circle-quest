@@ -42,6 +42,7 @@ class Hero():
         self.dead = False
         self.won = False
         self.pos = self.spawn
+        self.vel = 1
         
     def check(self, obj):
         if self.pos == obj.pos and obj.danger == True:
@@ -69,8 +70,9 @@ class Hero():
             if loc == self.pos :
                 self.vel = self.vel * 1
                 
-    def blink(self):
-        if self.count < 5:
+    
+    def victoryBlink(self):
+        if self.count < 10:
             if self.count % 2 == 0:
                 self.w = 100 
             else:
@@ -79,7 +81,7 @@ class Hero():
             self.count = self.count + 1
         else:
             self.count = 0
-            self.resurrect
+            self.resurrect()
             
 
         

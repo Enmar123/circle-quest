@@ -157,7 +157,7 @@ if __name__ == '__main__':
             
             if hero.won:
                 hero.vel = 0
-                hero.blink()
+                hero.victoryBlink()
             else:
                  hero.lose_health(255/5*.1)
             
