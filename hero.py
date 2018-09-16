@@ -42,7 +42,7 @@ class Hero():
         self.dead = False
         self.won = False
         self.pos = self.spawn
-        self.vel = 1
+        self.vel = 0
         
     def check(self, obj):
         if self.pos == obj.pos and obj.danger == True:

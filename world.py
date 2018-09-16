@@ -17,13 +17,9 @@ class World():
             roll = reading[2]
             file.close()
         except:
-            pitch = 0
-            roll = 0
+            pass
         
-        if isinstance(pitch, str):
             self.pitch = float(pitch.strip('pitch: '))
-        
-        if isinstance(roll, str):
             self.roll = float(roll.strip('roll: '))
 
 if __name__=="__main__":
