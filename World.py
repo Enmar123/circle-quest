@@ -11,8 +11,8 @@ class World():
         self.roll = 0
     def readFile(self):
         file = open("imu_data.txt","r")
-        self.pitch = file.readline(2)
-        self.roll = file.readline(3)
+        self.pitch = file.readlines(2)
+        self.roll = file.readlines(3)
 
 if __name__=="__main__":
     
