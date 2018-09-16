@@ -1,4 +1,5 @@
 import numpy as np
+import math as m
 
 class Hero():
     def __init__(self):
@@ -42,7 +43,24 @@ class Hero():
         if self.pos == obj.pos and obj.danger == True:
             self.dead = True
     
+    def speed(self, pitch, roll):
+        
+        self.vel = m.hypot(pitch, roll)
+        
+        theta = np.arctan2(pitch, roll)
+        inc = 2*m.pi/35
+        led = int(theta/inc)
+    
+        for i in range(int(35/2)):
+            loc = (led - i)%35
+            if loc == self.pos :
+                self.vel = self.vel * -1
                 
-            
+        for i in range(int(35/2)):
+            loc = (led - i)%35
+            if loc == self.pos :
+                self.vel = self.vel * 1
+                
+
         
         

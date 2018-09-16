@@ -90,6 +90,10 @@ if __name__ == '__main__':
         lava = Lava()
         lava.pos = 15
         
+        lava1 = lava()
+        lava.pos = 30
+        
+        
         # create hero
         hero = Hero()
         hero.pos = 0
@@ -111,6 +115,7 @@ if __name__ == '__main__':
             
             # Painting obstacles
             img.set_led(int(lava.pos), int(lava.r),int(lava.g),int(lava.b),int(lava.w))
+            img.set_led(int(lava1.pos), int(lava1.r),int(lava1.g),int(lava1.b),int(lava1.w))
             
             # Paint Goal
             for i_led, v_led in enumerate(goal.rgb_out()):
@@ -146,10 +151,13 @@ if __name__ == '__main__':
             
 ########################game logic happens here#############################################
             
+            
             hero.check(lava)
+            hero.check(lava1)
             hero.move()
             
-            #lava.pulse()
+            lava.pulse()
+            lava1.pulse()
             
             hero.lose_health(255/5*.1)
             if hero.dead:
