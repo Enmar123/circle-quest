@@ -24,11 +24,14 @@ if __name__=="__main__":
     world = World()
     
     while True:
-        world.readFile()
-        print(world.pitch)
-        print(world.roll)
-        print("")
-        time.sleep(1)
+        try:
+            world.readFile()
+            print(world.pitch)
+            print(world.roll)
+            print("")
+            time.sleep(1)
+        except:
+            pass
         
     
     
