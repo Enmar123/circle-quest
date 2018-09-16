@@ -69,7 +69,7 @@ class Hero():
                 break
                 
         for i in range(int(35/2)):
-            loc = (led - i)%35
+            loc = (led + i)%35
             if loc == self.pos :
                 self.vel = const*(hypotenuse/scaling) * 1
                 break
