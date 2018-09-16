@@ -18,7 +18,7 @@ if __name__=="__main__":
     
     world = World()
     
-    while True
+    while True:
         world.readFile()
         print(world.pitch)
         print(world.roll)
