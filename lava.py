@@ -2,8 +2,8 @@ import numpy as np
 from random import randint
 
 class Lava():
-    def __init__(self):
-        self.pos = 0
+    def __init__(self, position):
+        self.pos = position
         self.r = 100
         self.g = 0
         self.b = 0

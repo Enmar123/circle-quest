@@ -13,6 +13,7 @@ from ledimage import ImageCreator
 from hero import Hero
 from goal import Goal
 from lava import Lava
+from world import World
 
 matrix_ip = '127.0.0.1' # Local device ip
 everloop_port = 20021 # Driver Base port
@@ -86,13 +87,12 @@ if __name__ == '__main__':
 
 ####################### Loading Objects ###############################
         
+        # Create world
+        world = World()
+        
         # create obstacle
-        lava = Lava()
-        lava.pos = 15
-        
-        lava1 = Lava()
-        lava1.pos = 30
-        
+        lava = Lava(15)
+        lava1 = Lava(30)
         
         # create hero
         hero = Hero(22)

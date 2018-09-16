@@ -16,8 +16,8 @@ class World():
         roll = reading[2]
         file.close()
         
-        self.pitch = pitch.strip('pitch: ')
-        self.roll = roll.strip('roll: ')
+        self.pitch = float(pitch.strip('pitch: '))
+        self.roll = float(roll.strip('roll: '))
 
 if __name__=="__main__":
     
