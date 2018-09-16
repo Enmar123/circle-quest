@@ -40,7 +40,7 @@ def imu_error_callback(error):
 def imu_data_callback(data):
     # Extract data
     data = sense_pb2.Imu().FromString(data[0])
-    file = open("testfile.txt","w")
+    file = open("imu_data.txt","w")
     file.write(str(data))
     file.close() 
     # Log data 
