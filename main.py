@@ -91,7 +91,7 @@ if __name__ == '__main__':
         lava.pos = 15
         
         lava1 = Lava()
-        lava.pos = 30
+        lava1.pos = 30
         
         
         # create hero
