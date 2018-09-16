@@ -17,7 +17,8 @@ class World():
             roll = reading[2]
             file.close()
         except:
-            pass
+            pitch = 0
+            roll = 0
         
         self.pitch = float(pitch.strip('pitch: '))
         self.roll = float(roll.strip('roll: '))
