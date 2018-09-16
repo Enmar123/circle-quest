@@ -165,6 +165,8 @@ if __name__ == '__main__':
                 hero.resurrect()
             
             world.readFile()
+            print(world.pitch)
+            print(world.roll)
             hero.speed(world.pitch, world.roll)
             hero.move()
             
