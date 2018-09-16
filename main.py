@@ -87,6 +87,10 @@ if __name__ == '__main__':
 
 ####################### Loading Objects ###############################
         
+        # global vars
+        old_pitch = 0
+        old_roll = 0
+        
         # Create world
         world = World()
         
@@ -155,6 +159,7 @@ if __name__ == '__main__':
             hero.check(lava1)
             hero.check(goal)
             
+            # Status behavious
             if hero.won:
                 hero.vel = 0
                 hero.victoryBlink()
@@ -164,11 +169,22 @@ if __name__ == '__main__':
             if hero.dead:
                 hero.resurrect()
             
-            world.readFile()
+            #Reading imu data
+            try:
+                world.readFile()
+            except:
+                world.pitch = old_pitch
+                world.roll = old_roll
+            
             print(world.pitch)
             print(world.roll)
+            
+            # object behavior
             hero.speed(world.pitch, world.roll)
             hero.move()
+            
+            old_pitch = world.pitch
+            old_roll = world.roll
             
             lava.pulse()
             lava1.pulse()
