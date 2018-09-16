@@ -70,7 +70,7 @@ class Hero():
                 self.vel = self.vel * 1
                 
     def blink(self):
-        if self.count < 10:
+        if self.count < 5:
             if self.count % 2 == 0:
                 self.w = 100 
             else:

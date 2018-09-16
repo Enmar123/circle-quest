@@ -95,7 +95,7 @@ if __name__ == '__main__':
         
         
         # create hero
-        hero = Hero(17)
+        hero = Hero(22)
         hero.vel = .5
         
         #create goal
@@ -156,7 +156,7 @@ if __name__ == '__main__':
             hero.check(goal)
             
             if hero.won:
-                hero.speed = 0
+                hero.vel = 0
                 hero.blink()
             else:
                  hero.lose_health(255/5*.1)
