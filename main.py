@@ -90,7 +90,7 @@ if __name__ == '__main__':
         lava = Lava()
         lava.pos = 15
         
-        lava1 = lava()
+        lava1 = Lava()
         lava.pos = 30
         
         
