@@ -96,7 +96,7 @@ if __name__ == '__main__':
         
         # create hero
         hero = Hero(22)
-        hero.vel = .5
+        hero.vel = 0
         
         #create goal
         goal = Goal()
@@ -150,7 +150,7 @@ if __name__ == '__main__':
             
 ########################game logic happens here#############################################
             
-            
+            # Status checks
             hero.check(lava)
             hero.check(lava1)
             hero.check(goal)
@@ -164,6 +164,8 @@ if __name__ == '__main__':
             if hero.dead:
                 hero.resurrect()
             
+            world.readFile()
+            hero.speed(world.pitch, world.roll)
             hero.move()
             
             lava.pulse()

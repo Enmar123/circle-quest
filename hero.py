@@ -54,7 +54,8 @@ class Hero():
     
     def speed(self, pitch, roll):
         
-        self.vel = m.hypot(pitch, roll)
+        hypotenuse = m.hypot(pitch, roll)
+        scaling = m.hypot(45,45)
         
         theta = np.arctan2(pitch, roll)
         inc = 2*m.pi/35
@@ -63,12 +64,12 @@ class Hero():
         for i in range(int(35/2)):
             loc = (led - i)%35
             if loc == self.pos :
-                self.vel = self.vel * -1
+                self.vel = (hypotenuse/scaling) * -1
                 
         for i in range(int(35/2)):
             loc = (led - i)%35
             if loc == self.pos :
-                self.vel = self.vel * 1
+                self.vel = (hypotenuse/scaling) * 1
                 
     
     def victoryBlink(self):
