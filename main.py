@@ -11,8 +11,8 @@ from ledimage import ImageCreator
 
 # Our own imports
 from hero import Hero
-from objects import Goal
-from obstacle import Lava
+from goal import Goal
+from lava import Lava
 
 matrix_ip = '127.0.0.1' # Local device ip
 everloop_port = 20021 # Driver Base port
