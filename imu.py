@@ -41,7 +41,7 @@ def imu_data_callback(data):
     # Extract data
     data = sense_pb2.Imu().FromString(data[0])
     file = open("testfile.txt","w")
-    file.write(data)
+    file.write(str(data))
     file.close() 
     # Log data 
     print('{0}'.format(data))
