@@ -39,12 +39,12 @@ def imu_error_callback(error):
 ## DATA UPDATE PORT ##
 def imu_data_callback(data):
     # Extract data
-    	            data = sense_pb2.Imu().FromString(data[0])
-					file = open("filetest.txt","w")
-					file.write(data)
-					file.close() 
+    data = sense_pb2.Imu().FromString(data[0])
+    file = open("testfile.txt","w")
+    file.write(data)
+    file.close() 
     # Log data 
-                    print('{0}'.format(data))
+    print('{0}'.format(data))
 
 ## Start Processes ##
 if __name__ == '__main__':
